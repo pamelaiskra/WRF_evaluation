@@ -13,14 +13,12 @@ location_file <- ("F:/F_Newcastle/RainGa_WRF2019.txt") # Newcastle OLD and NEW
 #location_file <- ("E:/E_Newcastle/delayed_ts/RainGa_WRFdelayed.txt") # Newcastle delayed
 #location_file <- ("F:/F_Birmingham/RainGa_WRFBir.txt")
 
-# Define location of the rain gauge files timeseries
-#rain_folder <- ("E:/DynaTOPMODEL/Docs_from_EnvObs/Hourly_Rainfall_EA_MIDAS")     
+# Define location of the rain gauge files timeseries 
 rain_folder <- ("F:/DECIPHeR/Docs_from_EnvObss/Hourly_Rainfall_EA_MIDAS")   
 
 # Define folder location of WRF timeseries for each cell.
 # This path must end where the WRF simulation number/names start for the "for" loop to work.
 # E.g. for files named "WRF_sim1", "WRF_sim2", "WRF_sim3", wrf_path should end in "WRF_sim"
-#wrf_path <- ("E:/DynaTOPMODEL/DECIPHeR/Hourly_timeseries/Hourly_rainfall_WRF/WRF_2km_sim")  # Newcastle
 #wrf_path <- ("E:/E_Newcastle/delayed_ts/WRF") # Newcastle delayed 
 wrf_path <- ("F:/DECIPHeR/Hourly_Rainfall/NewcastleWRF")
 #wrf_path <- ("F:/DECIPHeR/Hourly_Rainfall/BirminghamWRF_")
@@ -29,9 +27,7 @@ wrf_path <- ("F:/DECIPHeR/Hourly_Rainfall/NewcastleWRF")
 wrf_prefix <- ("rainfall_WRF_gridID")
 
 # Define full path of where the skill score files will be located
-fss_path <- ("E:/E_Newcastle/WRF_version4/Skill_Scores") # Newcastle original
 fss_path <- ("E:/E_Newcastle/delayed_ts/Skill_Scores")
-fss_path <- ("F:/F_Newcastle/Skill_Scores") #Newcastle new
 fss_path <- ("F:/F_Newcastle/Skill_Scores_v2") #Newcastle new version 2 (transforming WRF data to zeros)
 #fss_path <- ("F:/F_Birmingham/SKSC") #Birmingham
 
@@ -39,13 +35,11 @@ anfang  <- c(2012,6,28,1)                                             # Start of
 #anfang <- c(2007,7,20,1)    # Birmingham
 tage <- 2                                                             # Days in the simulation
 stunde <-0                                                            # Hours (in addition to days) in the simulation
-schwelle_vector <- 0.1                                                  #  c(0,0.1,0.3,0.5,0.7,1)
-#wrf_to_analyse <- c(1:5,13:19)                                       # Names of WRF simulations to analyse.
+schwelle_vector <- 0.1                                                # Disregard rainfall values <= 0.1 mm (this is due to the resolution of obs rain
+                                                                      # Names of WRF simulations to analyse.
 #wrf_to_analyse <- c("1delayed6","1delayed24","1delayed48","4delayed6","4delayed24","4delayed48","5delayed6","5delayed24","5delayed48")   
-#wrf_to_analyse <- c(21:30)
-#wrf_to_analyse <- LETTERS[1:10]  #Birmingham
-#wrf_to_analyse <- c(21,22,24,25, "26b","27b",28,"29b","30b") #NEW URBAN
-#wrf_to_analyse <- c("A","B","D","E","Fb","Gb","Hb","I","Jb")
+wrf_to_analyse <- c(21,22,24,25, "26b","27b",28,"29b","30b") #NEW URBAN
+#wrf_to_analyse <- c("A","B","D","E","Fb","Gb","Hb","I","Jb")         # Birmingham
 
 #---Measuring the time...
 #system.time({
