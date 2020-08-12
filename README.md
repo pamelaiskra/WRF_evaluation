@@ -1,7 +1,9 @@
-# WRF_evaluation
-Codes to evaluate outputs of WRF
+# Weater Research and Forecasting model
+Codes to evaluate outputs of WRF, plus an updated manual on how to run a simulation from scratch
 
-Reads NetCDF files, chooses RAINNC layer (rainfall from non-convective scheme = microphysics)
+Tasks performed by the codes:
+
+Read NetCDF files, choose relevant layer RAINNC layer (rainfall from non-convective scheme = microphysics)
 
 Calculates, for every 48-hour simulation (9 simulations)
 -Probability of Detection
