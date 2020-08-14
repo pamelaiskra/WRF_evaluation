@@ -83,3 +83,41 @@ for (j in 1:length(spatial_rows)){
   }
 }
 
+  
+# C) If NetCDF has only one value (1 row, 1 col, 1 layer)
+
+#Select variables
+indexes <- c(96:101)
+
+# Here are the values
+extract_values <- function(indexx, myncc=mync, mync_varr=mync_var) {
+  varr <- ncvar_get(myncc, mync_varr[indexx])
+  return(varr)
+}
+myvalues <- do.call(rbind,lapply(indexes, extract_values))
+
+# Here are the short names of the variables
+short_names <- mync_var[indexes]
+
+# Here are the long names of the variables
+long_names <- c(1:length(indexes))
+for (i in 1:length(indexes)) long_names[i] <- ncatt_get(mync,mync_var[i],
+                                                        "long_name")$value
+# HEre is the dataframe
+valuesvf <- data.frame(NameVar=short_names,ValVar=myvalues)
+
+plot(valuesvf$ValVar, main="Title", xaxt ="n",
+     xlab="X values",ylab="Y values")
+axis(1, labels = FALSE)
+# Plot x labs at default x position
+text(x =  seq_along(short_names),
+     y = par("usr")[3] - (par("usr")[4] - par("usr")[3])/30,
+     srt = 45, adj = 1, labels = short_names, xpd = TRUE)
+
+# OR
+ggplot(valuesvf, aes(x=NameVar,y=ValVar)) +
+  geom_point() +
+  labs(x = "Units X", y=expression(paste("algo"^"otroalgo"," otro"^"lala")), 
+       title="Plot", subtitle="Subtitle") +
+  theme( axis.text.x  = element_text(angle=345))
+  
